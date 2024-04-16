@@ -1,22 +1,39 @@
-<h2>Login</h2>
-{{ errorMessage }}
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  Email: <input formControlName="email" type="text" required /><br />
-  <span
-    style="color: red"
-    *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched"
-  >
-    Incorrect Email
-  </span>
+<div class="login-container">
+  <h2>Login</h2>
+  <div class="error-message">{{ errorMessage }}</div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="text" required />
+      <div
+        class="error-message"
+        *ngIf="
+          !loginForm.get('email')?.valid && loginForm.get('email')?.touched
+        "
+      >
+        Incorrect Email
+      </div>
+    </div>
 
-  password : <input formControlName="password" type="password" /><br />
-  <span
-    style="color: red"
-    *ngIf="
-      !loginForm.get('password')?.valid && loginForm.get('password')?.touched
-    "
-  >
-    Password is required
-  </span>
-  <input type="submit" value="Login" />
-</form>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        required
+      />
+      <div
+        class="error-message"
+        *ngIf="
+          !loginForm.get('password')?.valid &&
+          loginForm.get('password')?.touched
+        "
+      >
+        Password is required
+      </div>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+</div>

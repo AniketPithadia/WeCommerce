@@ -1,25 +1,35 @@
-<h2>Register</h2>
-{{ errorMessage }}
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  Email: <input formControlName="email" type="text" /><br />
-  <span
-    style="color: red"
-    *ngIf="
-      !registerForm.get('email')?.valid && registerForm.get('email')?.touched
-    "
-  >
-    email format is required
-  </span>
+<div class="register-container">
+  <h2>Register</h2>
+  <div class="error-message">{{ errorMessage }}</div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="text" />
+      <div
+        class="error-message"
+        *ngIf="
+          !registerForm.get('email')?.valid &&
+          registerForm.get('email')?.touched
+        "
+      >
+        Email format is required
+      </div>
+    </div>
 
-  password : <input formControlName="password" type="password" /><br />
-  <span
-    style="color: red"
-    *ngIf="
-      !registerForm.get('password')?.valid &&
-      registerForm.get('password')?.touched
-    "
-  >
-    Password is required
-  </span>
-  <input type="submit" value="Register" />
-</form>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" />
+      <div
+        class="error-message"
+        *ngIf="
+          !registerForm.get('password')?.valid &&
+          registerForm.get('password')?.touched
+        "
+      >
+        Password is required
+      </div>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+</div>

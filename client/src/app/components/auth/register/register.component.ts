@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { AuthService, IAuth } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -18,7 +19,11 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   authToken: IAuth = { token: '' };
   errorMessage: string = '';
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
   ngOnInit(): void {}
 
   //if more than one validators use array
@@ -38,18 +43,25 @@ export class RegisterComponent {
       )
       .subscribe({
         next: (token) => {
-          console.log(token);
-          // this.authToken = token;
-          //localStorage.setItem('authtoken', token.token);
+          this.openSnackBar('Login Successful');
+
           this.router.navigateByUrl('/home');
         },
         error: (e) => {
           console.log(e.error.errors);
-          this.errorMessage = e.error.errors[0].msg;
+          this.errorMessage = e.error.errors;
+          this.openSnackBar('All Fields are required');
         },
         complete: () => {
           console.info('complete');
         },
       });
+  }
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 }
