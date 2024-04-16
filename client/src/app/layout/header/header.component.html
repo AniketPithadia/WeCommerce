@@ -1,0 +1,46 @@
+<header class="wrapper row full-center">
+  <!-- Logo image -->
+  <img src="../../../assets/logo.png" alt="Logo image" class="logo" />
+
+  <!-- Navigation -->
+  <div class="row gap-1">
+    @if(!isLoggedIn){
+
+    <a
+      routerLink="/login"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Login</a
+    >
+
+    <a
+      routerLink="/register"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Register</a
+    >
+
+    } @else{
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+
+    <a
+      routerLink="/about"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >About</a
+    >
+    <a
+      routerLink="/logout"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Logout</a
+    >
+
+    }
+  </div>
+</header>

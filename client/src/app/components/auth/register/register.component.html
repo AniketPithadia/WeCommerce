@@ -1,0 +1,25 @@
+<h2>Register</h2>
+{{ errorMessage }}
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  Email: <input formControlName="email" type="text" /><br />
+  <span
+    style="color: red"
+    *ngIf="
+      !registerForm.get('email')?.valid && registerForm.get('email')?.touched
+    "
+  >
+    email format is required
+  </span>
+
+  password : <input formControlName="password" type="password" /><br />
+  <span
+    style="color: red"
+    *ngIf="
+      !registerForm.get('password')?.valid &&
+      registerForm.get('password')?.touched
+    "
+  >
+    Password is required
+  </span>
+  <input type="submit" value="Register" />
+</form>

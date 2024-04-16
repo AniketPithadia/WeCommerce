@@ -1,0 +1,10 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+  <label for="searchInput">Search Product</label>
+  <input
+    formControlName="searchInput"
+    placeholder="Product..."
+    id="searchInput"
+    type="text"
+    required
+  />
+</form>
