@@ -18,7 +18,7 @@ WeCommerce is a comprehensive e-commerce platform built using Angular. It offers
 - Reactive Forms Module
 - TypeScript
 - HTML/CSS
-- Bootstrap (for styling)
+- PrimeNg
 
 ## Contributors
 
